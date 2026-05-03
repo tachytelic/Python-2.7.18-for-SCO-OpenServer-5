@@ -1,0 +1,12 @@
+# The 30 MB tarball isn't tracked in git — distributed as a release asset
+prebuilt/python-2.7.18-sco.tar.gz
+
+# Build artifacts
+Python-*/
+Python-*.tgz
+py_install/
+
+# Editor / OS
+*.swp
+*~
+.DS_Store
