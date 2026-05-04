@@ -1,0 +1,21 @@
+--- Modules/socketmodule.c.bak	2022-05-24 02:15:11.000000000 -0400
++++ Modules/socketmodule.c	2022-05-24 02:15:58.000000000 -0400
+@@ -99,6 +99,9 @@
+ #include "structmember.h"
+ #include "timefuncs.h"
+ 
++/* we don't have reentrant libsocket */
++#undef _REENTRANT
++
+ #ifndef INVALID_SOCKET /* MS defines this */
+ #define INVALID_SOCKET (-1)
+ #endif
+@@ -272,7 +275,7 @@
+ /* Irix 6.5 fails to define this variable at all. This is needed
+    for both GCC and SGI's compiler. I'd say that the SGI headers
+    are just busted. Same thing for Solaris. */
+-#if (defined(__sgi) || defined(sun)) && !defined(INET_ADDRSTRLEN)
++#if !defined(INET_ADDRSTRLEN)
+ #define INET_ADDRSTRLEN 16
+ #endif
+ 
